@@ -1,0 +1,493 @@
+/* table of contents 
+
+1. global styles
+   1.1 shared properties
+2. typography
+3. layout
+    3.1 navigation
+    3.2 hero
+    3.3 menu
+    3.4 order
+    3.5 signature
+    3.6 footer
+4. components
+    4.1 buttons
+    4.2 lines
+    4.3 grid
+    4.4 icon
+    4.5 input
+
+*/
+
+/* 1. global styles */
+
+* {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Crimson Text", serif;
+  font-size: 1.05rem;
+}
+
+html,
+body {
+  height: 100%;
+  /* why body 100% by itself doesnt work? cause html not defined yet. before body (child), comes html (parent) */
+}
+
+/* 1.1 shared properties */
+
+.flex {
+  display: flex;
+}
+
+.flex__container_center {
+  justify-content: center;
+  align-items: center;
+}
+
+.alignment__center {
+  text-align: center;
+}
+
+.paragraph__property {
+  line-height: 2rem;
+  max-width: 48rem;
+  word-wrap: break-word;
+}
+
+/* ! outermost part (each section of web content) */
+.section__wrap {
+  background-color: rgba(67, 40, 16, 0.127);
+  flex-direction: column;
+  padding: 6rem 0 8rem 0;
+  width: 100%;
+  height: auto;
+}
+
+.letter__spacing_small {
+  letter-spacing: 0.055rem;
+}
+
+.letter__spacing_big {
+  letter-spacing: 0.15rem;
+}
+
+.margin__small {
+  margin-bottom: 3rem;
+}
+
+.hero__text > *,
+.heading__one {
+  /* add space to children of parent div exclusively */
+  margin-bottom: 1.5rem;
+}
+
+.text__uppercase {
+  text-transform: uppercase;
+}
+
+/* 2. typography */
+
+@font-face {
+  font-family: "Hallies";
+  src: url("fonts/Hallies.otf");
+}
+
+@font-face {
+  font-family: "Botera";
+  src: url("fonts/Botera.otf");
+}
+
+.logo {
+  font-family: "Botera";
+  font-size: 1.15rem;
+}
+
+.heading__one {
+  font-size: 8rem;
+  font-family: "Hallies";
+  color: #cbbcb1;
+}
+
+.heading__two {
+  font-family: "Prata", serif;
+  font-size: 4.5rem;
+  color: #a5846b;
+  font-weight: 100;
+}
+
+.heading__three {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.heading__four {
+  font-weight: 650;
+  font-size: 1.5rem;
+}
+
+.heading__five {
+  color: #916645;
+  font-size: 1.1rem;
+  font-weight: 550;
+}
+
+.heading__six {
+  color: #a5846b;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0 0.3rem;
+}
+/* NB: next time lgsg h1 h2 dr html aja */
+
+/* 3. layout */
+
+/* 3.1 navigation */
+
+.navigation {
+  justify-content: space-between;
+  padding: 2.5rem;
+}
+
+.navigation * {
+  color: #cbbcb1;
+}
+
+.navigation__link {
+  padding: 0 1.35rem;
+  letter-spacing: 0.05rem;
+  font-size: 1.1rem;
+}
+
+nav {
+  display: flex;
+}
+
+/* 3.2 hero */
+
+.hero {
+  height: 85%;
+  flex-direction: column;
+  background-image: url("asset/img/cover.jpg");
+  background-size: 110%;
+  background-position: top;
+  position: relative;
+
+  /* *helps
+  https://stackoverflow.com/questions/42427383/how-to-zoom-in-a-background-image-to-the-center-of-it 
+  the point: change bg-size cover to (number: 130%) to zoom as u wish. make bg position top instead of center (sesuai kebutuhan)
+  */
+
+  background-color: rgba(105, 67, 35, 0.4);
+  background-blend-mode: multiply;
+
+  /* * saves the day
+  https://stackoverflow.com/questions/18815157/how-to-overlay-image-with-color-in-css 
+  */
+}
+
+.hero__text {
+  flex-direction: column;
+  text-align: center;
+  color: #cbbcb1;
+}
+
+.hero__centering {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 3.3 menu */
+
+.menu__column_wrap {
+  flex-direction: row;
+}
+
+.menu__img {
+  width: 5.2rem;
+  height: 5.2rem;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.menu__item_heading {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu__item_info {
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.menu__list_item {
+  margin: 1.7rem 2.5rem;
+}
+
+.menu__item_heading *,
+.menu__desc_spacing {
+  margin: 0.4rem;
+}
+
+.menu__desc_spacing {
+  margin: 0 0.4rem;
+  /* note, this margin must match with .menu__item_heading * */
+}
+
+/* 3.4 order */
+
+.order {
+  height: 95%;
+  flex-direction: column;
+  background-image: url("asset/img/cover.jpg");
+  background-size: 240%;
+  background-position: top;
+  position: relative;
+
+  color: #cbbcb1;
+  background-color: rgba(105, 67, 35, 0.6);
+  background-blend-mode: multiply;
+
+  /* versi 1 dark */
+  /* background-color: rgba(49, 34, 18, 0.86);
+  background-blend-mode: overlay; */
+
+  /* versi 2 light */
+  /* background-color: rgb(42, 31, 5);
+  background-blend-mode: multiply; */
+}
+
+.order__steps {
+  margin: 3rem 0 0;
+  width: 72%;
+  justify-content: space-between;
+  color: #cbbcb1;
+}
+
+.order__img {
+  width: 16rem;
+  height: 16rem;
+  margin-bottom: 1.5rem;
+}
+
+.order__img_wrap > p {
+  margin-bottom: 0.3rem;
+}
+
+/* 3.5 signature */
+
+.signature__menu {
+  width: 72%;
+}
+
+.signature__menu *,
+.signature__text_wrap > * {
+  margin-bottom: 0.2rem;
+}
+
+.signature__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signature__info {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signature__img_wrap {
+  aspect-ratio: 3/4;
+}
+
+/* 3.6 footer */
+
+footer {
+  background-color: #453020;
+  color: #cbbcb1;
+  height: 55%;
+  width: 100%;
+}
+
+.footer__wrap {
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-template-columns: 20rem 15.2rem 19rem;
+  column-gap: 15rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.footer__wrap * {
+  margin-bottom: 0.7rem;
+}
+
+.footer__font_size {
+  font-size: 1.2rem;
+}
+
+.footer__logo_size {
+  font-size: 1.4rem;
+}
+
+.footer__company_desc {
+  padding-left: 1rem;
+}
+
+/* 4. components */
+
+/* 4.1 buttons */
+
+.button {
+  color: #ddd3ca;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  font-size: 1rem;
+  border-radius: 0.15rem;
+}
+
+.btn__primary {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  background-color: #93561a;
+}
+
+.btn__secondary {
+  padding: 0.5rem 1.8rem;
+}
+
+.btn__login {
+  color: #cbbcb1;
+  border: 2px solid #cbbcb1;
+}
+
+.btn__order {
+  padding: 0.5rem 1.8rem;
+  background-color: #93561a;
+}
+
+/* 4.2 lines */
+
+.line__thin {
+  width: 12rem;
+  opacity: 0.3;
+  border-top: 0.1rem solid #a5846b;
+}
+
+.line__thick {
+  display: inline-block;
+  /* assumption: default value: inline (can't take wxh measurement), so we need to declare display block/inline-block for it to show */
+  width: 1.2rem;
+  border-top: 0.125rem solid #a5846b;
+  position: relative;
+  bottom: 0.3rem;
+  /* 
+  https://stackoverflow.com/questions/14821087/horizontal-line-and-right-way-to-code-it-in-html-css */
+}
+
+/* 4.4 grid */
+
+.grid__container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(3, auto);
+  column-gap: 3.5rem;
+
+  /* 
+  https://stackoverflow.com/questions/50362897/grid-row-gap-not-applying-percentage
+   
+  * grid value repeat
+  https://learncssgrid.com/#repeating-grid-tracks 
+
+  * explicit grid
+  https://learncssgrid.com/
+  */
+}
+
+/* 4.4 icon */
+
+.icon__general {
+  color: #453121;
+  background: rgba(219, 209, 200, 0.85);
+  border-radius: 100%;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  margin: 0.6rem 0.7rem 0 0;
+}
+
+.icon__submit {
+  padding: 0.6rem;
+  color: #cbbcb1;
+  position: absolute;
+  left: 12.8rem;
+  top: 0.15rem;
+  /* left value dependent on "input wrap" */
+}
+
+/* 4.5 input */
+
+.input__email {
+  background: rgba(219, 209, 200, 0.1);
+  color: #cbbcb1;
+  border: none;
+  border-bottom: 3px solid #cbbcb1;
+  outline: none;
+  height: 2.5rem;
+  width: 15.5rem;
+  padding: 0 1rem;
+}
+
+.input__email::placeholder {
+  font-family: "Crimson Text", serif;
+  font-size: 1rem;
+  color: #cbbcb1;
+  opacity: 0.5;
+}
+
+.input__wrap {
+  position: relative;
+}
+
+/* 
+
+QUESTIONS
+? img sizing 
+https://www.editorx.com/shaping-design/article/resize-image-css 
+
+? using aspect ratio vs width height to size container
+aspect-ratio: 3/4;
+sebelum pake ini, image size lari semua krn ad campur portrait dan landscape pas distyle pake width dan height satuan %. why? even container width height (max) din work
+
+TODO: 
+1. See if it's better to use height auto or height 100% (lebih rapi gak?)
+2. Refactor, gabung yg bs digabung jadi 1 class aja (font-weight)
+   2.1 color
+
+DESIGN
+1. Samakan padding left right masing2 webpage (lbh rapi) tp mgkn custom jg gpp, sesuaikan sm kondisi
+
+CODING
+1. I need to be aware theres a feature called scale img, rly. webp to jpg (scaled) keywordnya
+2. Anyway, jangan bingung flex absolute itu apa kalau kebaca lg. Ingat aja "to position element" wherever you want, (relative) to "nearest" ancestor element 
+3. Making nav with <li> reference: https://www.howtocode.io/posts/tailwind-css-travel-site-2-navigation-and-hero
+4. gotta specify height to be able to use justify center 
+5. why use height auto: 
+   ans: height auto adjusts the parent container value to childrens
+6. next langsung pake h1, h2, h3 dr html instead of using .heading1 .heading2
+7. body bagi dulu jadi 3: header, main dan footer instead of using div as wrapper
+
+EXP
+1. Gak ada salahnya ikut baca info lain pas searching, like this one:
+   - grid-template-columns: 20rem 15.2rem 19rem;
+   - these values i know can custom because i happened to read sekilas, lol https://www.w3schools.com/cssref/pr_grid-template-columns.asp 
+2. If an element doesnt show after styling (wxh) dll, may want to try set display: block/inline-block; and see how it goes after.
+
+*/
